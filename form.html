@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const phone = document.getElementById("phone").value;
+
+      // Name validation (at least 3 alphabets, no numbers/special chars)
+      const namePattern = /^[A-Za-z]{3,}$/;
+      if (!namePattern.test(name)) {
+        alert("Name must contain at least 3 alphabets and no numbers or special characters ❌");
+        return false;
+      }
+
+      // Email validation
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        alert("Enter a valid email address ❌");
+        return false;
+      }
+
+      // Password validation
+      const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!passwordPattern.test(password)) {
+        alert("Password must be at least 8 characters and include uppercase, lowercase, number, and special character ❌");
+        return false;
+      }
+
+      // Phone number validation (10 digits only)
+      const phonePattern = /^[0-9]{10}$/;
+      if (!phonePattern.test(phone)) {
+        alert("Phone number must contain exactly 10 digits ❌");
+        return false;
+      }
+
+      alert("Form submitted successfully 🎉");
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+
+  <h2>Registration Form</h2>
+
+  <form onsubmit="return validateForm()">
+
+    <label>Name:</label><br>
+    <input type="text" id="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="text" id="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" id="password" required><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="text" id="phone" required><br><br>
+
+    <label>Date of Birth:</label><br>
+    <input type="date" id="dob" required><br><br>
+
+    <input type="submit" value="Submit">
+
+  </form>
+
+</body>
+</html>
